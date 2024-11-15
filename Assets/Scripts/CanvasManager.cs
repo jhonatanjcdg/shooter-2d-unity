@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
 using TMPro;
 using UnityEngine.UI;
 
@@ -16,6 +15,7 @@ public class CanvasManager : MonoBehaviour
     public StatisticsPlayer player;
 
     public Image healthPlayerImage;
+    public Text textHealthImage;
 
     void Start()
     {
@@ -25,13 +25,14 @@ public class CanvasManager : MonoBehaviour
     void Update()
     {
         // Actualizar texto del costo de las mejoras
-        textPoints.text = player.points.ToString();
-        textDamage.text = player.damageCost.ToString();
-        textSpeed.text = player.speedAtackCost.ToString();
-        textHealth.text = player.healthCost.ToString();
-        textHealing.text = player.speedRegenHealthCost.ToString();
+        textPoints.text = "" + (int) player.points;
+        textDamage.text = "" + (int) player.damageCost;
+        textSpeed.text = "" + (int) player.speedAtackCost;
+        textHealth.text = "" + (int) player.healthCost;
+        textHealing.text = "" + (int) player.speedRegenHealthCost;
         
         // Actualizar imagen del health player
         healthPlayerImage.fillAmount = (float)player.health / (float)player.healthMax;
+        textHealthImage.text = (player.health > 0)?(int) player.health + "/" + (int) player.healthMax: "0";
     }
 }
