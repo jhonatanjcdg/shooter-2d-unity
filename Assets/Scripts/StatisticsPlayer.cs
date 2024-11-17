@@ -53,9 +53,7 @@ public class StatisticsPlayer : MonoBehaviour
         health -= cantidad;
         if (health <= 0)
         {
-            // Aquí podrías implementar la lógica de muerte del jugador
-            Debug.Log("El jugador ha muerto.");
-            // Por ejemplo, podrías deshabilitar al jugador o mostrar una pantalla de Game Over
+            // Pantalla game over
         }
     }
 

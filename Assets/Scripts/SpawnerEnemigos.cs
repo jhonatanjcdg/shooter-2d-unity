@@ -7,15 +7,19 @@ public class SpawnerEnemigos : MonoBehaviour
     public float limiteIzquierdo = -9f;  // Límite izquierdo del área de spawn
     public float limiteDerecho = 9f;  // Límite derecho del área de spawn
     public float alturaDeSpawn = 6f;  // Altura de la pantalla donde los enemigos aparecerán
+    public GameObject containerEnemies;
 
     private float tiempoSiguienteSpawn;
+
+    public int enemiesSpawnCount = 0;
 
     void Update()
     {
         // Controlar el tiempo entre spawns
-        if (Time.time >= tiempoSiguienteSpawn)
+        if (Time.time >= tiempoSiguienteSpawn && tiposDeEnemigos.Length > 0)
         {
             SpawnearEnemigo();
+            enemiesSpawnCount++;
             tiempoSiguienteSpawn = Time.time + tiempoEntreSpawns;
         }
     }
@@ -30,6 +34,7 @@ public class SpawnerEnemigos : MonoBehaviour
         int indiceEnemigo = Random.Range(0, tiposDeEnemigos.Length);
 
         // Instanciar el enemigo en la posición aleatoria
-        Instantiate(tiposDeEnemigos[indiceEnemigo], posicionDeSpawn, Quaternion.identity);
+        GameObject enemy = Instantiate(tiposDeEnemigos[indiceEnemigo], posicionDeSpawn, Quaternion.identity);
+        enemy.transform.SetParent(containerEnemies.transform);
     }
 }

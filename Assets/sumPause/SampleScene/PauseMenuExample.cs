@@ -9,7 +9,7 @@ public class PauseMenuExample : MonoBehaviour {
         // Get panel object
         panel = transform.Find("PauseMenuPanel").gameObject;
         if (panel == null) {
-            Debug.LogError("PauseMenuPanel object not found.");
+            // Debug.LogError("PauseMenuPanel object not found.");
             return;
         }
 

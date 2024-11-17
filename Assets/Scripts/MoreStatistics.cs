@@ -30,6 +30,7 @@ public class MoreStatistics : MonoBehaviour
         // Primero verifica si tiene suficientes puntos para mejorar
         if(player.points >= player.healthCost){
             player.healthMax += cantidad;
+            player.health += cantidad;
             player.healthCost *= 1.2f;
         }
     }

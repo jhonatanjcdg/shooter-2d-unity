@@ -26,7 +26,6 @@ public class SumPause : MonoBehaviour {
         get { return status; }
         set {
             status = value;
-            Debug.Log("Pause status set to " + status.ToString());
 
             OnChange();
 
@@ -34,7 +33,6 @@ public class SumPause : MonoBehaviour {
             if (CheckLinks())
                 instance.image.sprite = status ? instance.pausedSprite : instance.playingSprite;
             else
-                Debug.LogError("Links missing on SumPause component. Please check the sumPauseButton object for missing references.");
 
             // Notify other objects of change
             if (instance.useEvent && pauseEvent != null)

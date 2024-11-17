@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EstadosManager : MonoBehaviour
 {
-    public bool disparoAutomatico;
+    public bool disparoAutomatico = false;
 
     void Start()
     {
