@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,5 +34,17 @@ public class GameManager : MonoBehaviour
         // }
         // StatisticsPlayer.instance.health = StatisticsPlayer.instance.healthMax;
         levelManager.RestartLevel();
+    }
+
+    public void ChangeScene(string name)
+    {
+        if (!string.IsNullOrEmpty(name))
+        {
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            Debug.LogError("Error al cargar la escena con el nombre nullo o no existe");
+        }
     }
 }
