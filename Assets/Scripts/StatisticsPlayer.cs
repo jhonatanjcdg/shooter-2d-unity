@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatisticsPlayer : MonoBehaviour
 {
-    public static  StatisticsPlayer instance;
+    public static StatisticsPlayer instance;
 
     public float points = 100f;
 
@@ -18,6 +18,8 @@ public class StatisticsPlayer : MonoBehaviour
     public float healthCost = 10f;
     public float speedAtackCost = 10f;
     public float speedRegenHealthCost = 10f;
+
+    public GameObject gameOverPanel;
 
     void Awake()
     {
@@ -35,14 +37,31 @@ public class StatisticsPlayer : MonoBehaviour
         health = healthMax;
     }
 
+    void Start()
+    {
+        gameOverPanel = GameObject.FindGameObjectWithTag("gameover");
+
+        if (gameOverPanel != null)
+        {
+            // Asegurarte de que esté desactivado al inicio
+            gameOverPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("No se encontró ningún objeto con el tag 'gameover'");
+        }
+    }
+
     void FixedUpdate()
     {
         // Update healing speed
         health += speedRegenHealth * Time.deltaTime;
-        if(health > healthMax){
+        if (health > healthMax)
+        {
             health = healthMax;
         }
-        if(health <= 0){
+        if (health <= 0)
+        {
             //  Game Over
 
         }
@@ -54,10 +73,29 @@ public class StatisticsPlayer : MonoBehaviour
         if (health <= 0)
         {
             // Pantalla game over
+            GameOver();
+            Debug.Log("Player died");
         }
     }
 
-    public void AgregarPuntos(float cantidad){
+    void GameOver()
+    {
+        if (gameOverPanel != null)
+        {
+            // Activar el panel de Game Over
+            gameOverPanel.SetActive(true);
+
+            // Pausar el juego
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Debug.Log("Error setting gameoverPanel to true");
+        }
+    }
+
+    public void AgregarPuntos(float cantidad)
+    {
         points += cantidad;
     }
 }
