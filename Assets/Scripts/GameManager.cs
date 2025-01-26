@@ -33,7 +33,10 @@ public class GameManager : MonoBehaviour
         //     Destroy(child.gameObject);
         // }
         // StatisticsPlayer.instance.health = StatisticsPlayer.instance.healthMax;
-        levelManager.RestartLevel();
+        if (levelManager != null)
+            levelManager.RestartLevel();
+        else
+            Debug.Log("Error restarting game");
     }
 
     public void ChangeScene(string name)
@@ -46,5 +49,16 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Error al cargar la escena con el nombre nullo o no existe");
         }
+    }
+
+    public void ExitGame()
+    {
+        // Si estás en el editor de Unity
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Si estás ejecutando un build del juego
+        Application.Quit();
+#endif
     }
 }

@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 448724558}
   - component: {fileID: 448548838}
   m_Layer: 5
-  m_Name: OtherButton
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1315,7 +1315,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 448724558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 73325903}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Inicio
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &448699228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,7 +1437,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Moar Stuff
+  m_Text: Main menu
 --- !u!114 &448771408
 MonoBehaviour:
   m_ObjectHideFlags: 0
